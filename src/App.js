@@ -93,14 +93,14 @@ function ChatRoom() {
   }
 
   return (
-    <div className='main'>
+    <div>
       <div className='button-header'>
         <span>OPEN CHAT</span>
         <SignOut />
       </div>
-      <div className='main'>
+      <main>
         {messages && messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
-      </div>
+      </main>
 
       <form onSubmit={sendMessage}>
         <input value={formValue} onChange={(e) => setFormValue(e.target.value)} />
@@ -118,7 +118,7 @@ function ChatMessage(props) {
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
 
   return (
-    <div>
+    <div className='message-container'>
       <div className={`message ${messageClass}`}>
         <img src={photoURL} defaultValue="./profile.png" />
         <p>{text}</p>
